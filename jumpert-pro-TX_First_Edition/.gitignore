@@ -1,0 +1,23 @@
+# 编译输出
+build/
+*.o
+*.d
+*.elf
+*.hex
+*.bin
+*.map
+
+# IDE 配置（EIDE / VSCode）
+.eide/
+.vscode/
+*.code-workspace
+.cmsis/
+*.launch
+*.tasks
+
+# 其他临时文件
+*.log
+*.bak
+*~
+*.swp
+.DS_Store
