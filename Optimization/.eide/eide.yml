@@ -1,0 +1,315 @@
+version: "4.1"
+name: Project
+type: ARM
+deviceName: null
+packDir: null
+srcDirs:
+  - app
+  - bsp_driver
+  - HAL_Library
+  - LL_Library
+  - mcu_driver
+  - middleware
+  - System
+  - framework
+virtualFolder:
+  name: <virtual_root>
+  files:
+    - path: STM32F407VETx_FLASH.ld
+  folders:
+    - name: FreeRTOS_CORE
+      files:
+        - path: FreeRtos/event_groups.c
+        - path: FreeRtos/list.c
+        - path: FreeRtos/queue.c
+        - path: FreeRtos/stream_buffer.c
+        - path: FreeRtos/tasks.c
+        - path: FreeRtos/timers.c
+      folders: []
+    - name: FreeRTOS_PORTABLE
+      files:
+        - path: FreeRtos/portable/GCC/ARM_CM4F/port.c
+        - path: FreeRtos/portable/memmang/heap_4.c
+      folders: []
+    - name: Start
+      files:
+        - path: Start/core_cm4.h
+        - path: Start/startup_stm32f407xx.s
+        - path: Start/stm32f4xx.h
+        - path: Start/stm32f407xx.h
+        - path: Start/system_stm32f4xx.c
+        - path: Start/system_stm32f4xx.h
+        - path: Start/cmsis_armcc.h
+        - path: Start/cmsis_compiler.h
+        - path: Start/cmsis_version.h
+        - path: Start/mpu_armv7.h
+      folders: []
+    - name: User
+      files:
+        - path: User/main.c
+        - path: User/bmp390l_drdy_sim.c
+      folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 7009b3e1f1ab97e8413b9046f9c65820
+targets:
+  Target 1:
+    cppPreprocessAttrs:
+      defineList:
+        - USE_FULL_LL_DRIVER
+        - HSE_VALUE=8000000
+        - HSE_STARTUP_TIMEOUT=100
+        - LSE_STARTUP_TIMEOUT=5000
+        - LSE_VALUE=32768
+        - EXTERNAL_CLOCK_VALUE=12288000
+        - HSI_VALUE=16000000
+        - LSI_VALUE=32000
+        - VDD_VALUE=3300
+        - PREFETCH_ENABLE=1
+        - INSTRUCTION_CACHE_ENABLE=1
+        - DATA_CACHE_ENABLE=1
+        - STM32F407xx
+        - USE_HAL_DRIVER
+      incList:
+        - Listings
+        - Objects
+        - Start
+        - User
+        - HAL_Library
+        - System
+        - FreeRtos/portable/GCC/ARM_CM4F
+        - FreeRtos/include
+        - FreeRtos/source
+        - .cmsis/include
+        - RTE/_Target 1
+        - app
+        - bsp_driver
+        - config
+        - LL_Library
+        - mcu_driver
+        - middleware
+        - framework
+      libList: []
+    excludeList:
+      - <virtual_root>/System
+      - mcu_driver/tim/tim3.c
+    settings:
+      debugger: cortex-debug
+    toolchain: GCC
+    toolchainConfigMap:
+      AC5:
+        archExtensions: ""
+        cpuType: Cortex-M4
+        floatingPointHardware: single
+        options:
+          version: 4
+          afterBuildTasks: []
+          asm-compiler: {}
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            C_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            c99-mode: true
+            one-elf-section-per-function: true
+            optimization: level-0
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+            use-microLIB: false
+          linker:
+            $disableOutputTask: true
+            $outputTaskExcludes:
+              - .bin
+            output-format: elf
+            ro-base: "0x08000000"
+            rw-base: "0x20000000"
+            xo-base: ""
+        scatterFilePath: ""
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: true
+              mem:
+                size: "0x20000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: true
+              mem:
+                size: "0x10000"
+                startAddr: "0x10000000"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x80000"
+                startAddr: "0x8000000"
+              tag: IROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+        useCustomScatterFile: false
+      AC6:
+        archExtensions: ""
+        cpuType: Cortex-M4
+        floatingPointHardware: single
+        options:
+          version: 3
+          afterBuildTasks: []
+          asm-compiler:
+            $use: asm-auto
+            misc-controls: ""
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            language-c: c99
+            language-cpp: c++11
+            link-time-optimization: false
+            optimization: level-0
+          global:
+            output-debug-info: enable
+            use-microLIB: false
+          linker:
+            $outputTaskExcludes:
+              - .bin
+            misc-controls: --diag_suppress=L6329
+            output-format: elf
+        scatterFilePath: ""
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: true
+              mem:
+                size: "0x20000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: true
+              mem:
+                size: "0x10000"
+                startAddr: "0x10000000"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x80000"
+                startAddr: "0x08000000"
+              tag: IROM
+        useCustomScatterFile: false
+      GCC:
+        archExtensions: ""
+        cpuType: Cortex-M4
+        floatingPointHardware: single
+        options:
+          version: 5
+          afterBuildTasks: []
+          asm-compiler:
+            defines:
+              - HSE_VALUE=8000000
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            language-c: c11
+            language-cpp: c++11
+            one-elf-section-per-data: true
+            one-elf-section-per-function: true
+            optimization: level-debug
+            warnings: all-warnings
+          global:
+            $float-abi-type: hard
+            arm-thumb-mode: thumb
+            misc-control: -Wl,-u,_printf_float -u _printf_float
+            not-use-syscalls: true
+            output-debug-info: enable
+            use-newlib-nano: true
+          linker:
+            $outputTaskExcludes:
+              - .bin
+            $toolName: auto
+            LIB_FLAGS: -lm
+            output-format: elf
+            remove-unused-input-sections: true
+        scatterFilePath: STM32F407VETx_FLASH.ld
+        storageLayout:
+          RAM: []
+          ROM: []
+        useCustomScatterFile: true
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      OpenOCD:
+        baseAddr: "0x08000000"
+        bin: ""
+        interface: stlink
+        target: stm32f1x
+      STLink:
+        address: "0x08000000"
+        bin: ""
+        elFile: None
+        optionBytes: .eide/target 1.st.option.bytes.ini
+        otherCmds: ""
+        proType: SWD
+        resetMode: default
+        runAfterProgram: true
+        speed: 4000
+    uploader: STLink

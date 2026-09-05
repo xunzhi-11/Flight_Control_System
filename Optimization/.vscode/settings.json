@@ -1,0 +1,4 @@
+{
+    "idf.enableStatusBar": false,
+    "idf.notificationMode": "Silent"
+}
